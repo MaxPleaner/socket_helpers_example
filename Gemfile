@@ -49,5 +49,6 @@ end
 gem 'rails_12factor', group: :production
 gem 'rollbar', '~>1.2.7'
 
+gem "bcrypt"
 gem "websocket-rails"
 gem "socket_helpers" # , path: "/home/max/Desktop/gem/socket_helpers"
