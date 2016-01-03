@@ -18,5 +18,5 @@
 //= require_tree .
 
 $(function(){
-  SocketHelpers.initialize(["todo"], "localhost:3000/websocket")
+  SocketHelpers.initialize(["todo"], "socket-helpers-example.herokuapp.com/websocket")
 })
