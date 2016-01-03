@@ -1,4 +1,4 @@
 class HtmlPagesController < ApplicationController
-  def root
+  def todos
   end
 end

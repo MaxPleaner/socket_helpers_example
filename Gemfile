@@ -47,4 +47,4 @@ group :development do
 end
 
 gem "websocket-rails"
-gem "socket_helpers" # , path: "/home/max/Desktop/gem/socket_helpers"
+gem "socket_helpers", path: "/home/max/Desktop/gem/socket_helpers"

@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  get 'html_pages/root'
+  # auth
+  get "/", to: "authentication#root"
+  post "authenticate", to: "authentication#authenticate"
+  post "logout", to: "authentication#logout"
 
-  get "/", to: "html_pages#root"
+  # todos
+  get "/todos", to: "html_pages#todos"
   post "todos", to: "todos#create"
   delete "todos", to: "todos#destroy"
 end
