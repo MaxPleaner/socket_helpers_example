@@ -1,0 +1,22 @@
+<b> Create todo </b><br>
+<form action="todos" method="POST">
+  <input type="text" name="content">
+  <input type="submit" value="create">
+</form>
+
+<hr>
+<b> Todos Index </b>
+<ul class="todo-index">
+  <div template>
+    <li>
+      content: <span template-attr='content'></span>
+      <form action="todos" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="id" template-attr="id">
+        <input type="submit" value="remove">
+      </form>
+    </li>
+  </div>
+</ul>
+
+<hr>

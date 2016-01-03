@@ -11,6 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require websocket_rails/main
+//= require socket_helpers
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(function(){
+  SocketHelpers.initialize(["todo"], "localhost:3000/websocket")
+})
