@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module DeployedTest
   class Application < Rails::Application
     config.logger = Logger.new(STDOUT)
+    config.log_level = :debug
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
