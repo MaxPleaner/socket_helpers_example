@@ -46,5 +46,7 @@ group :development do
   gem 'spring'
 end
 
+gem "pry-rails"
 gem "websocket-rails"
 gem "socket_helpers", path: "/home/max/Desktop/gem/socket_helpers"
+gem "bcrypt"
