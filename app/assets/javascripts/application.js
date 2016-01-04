@@ -12,11 +12,30 @@
 //
 //= require jquery
 //= require websocket_rails/main
+//= require jquery-initialize
 //= require socket_helpers
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
 
 $(function(){
-  SocketHelpers.initialize(["todo", "user"], "socket-helpers-example.herokuapp.com/websocket")
+  SocketHelpers.initialize(["todo", "user"], "localhost:3000/websocket")
+  function authenticateListener(){
+    $("form[action='authenticate']").on("submit", function(e){
+      e.preventDefault();
+      var $form = $(e.currentTarget)
+      $.ajax({
+        url: "/authenticate",
+        method: "POST",
+        data: {
+          name: $form.find("[name='name']").val(),
+          password: $form.find("[name='password']").val()
+        },
+        success: function(e){
+          window.location.href = "http://localhost:3000/todos"
+        }
+      })
+    })
+  } 
+  authenticateListener()
 })
