@@ -6,7 +6,11 @@ class AuthenticationController < ApplicationController
     user = User.find_by(name: params[:name])
     if user && BCrypt::Password.new(user.password).is_password?(params[:password])
       session["current_user"] = user.id
+<<<<<<< Updated upstream
+      websocket_response(user, "create")
+=======
       render json: Oj.dump([ "OK"]), status: 200
+>>>>>>> Stashed changes
     elsif user
       render json: Oj.dump(["invalid password"]), status: 401
     else
@@ -15,12 +19,22 @@ class AuthenticationController < ApplicationController
         password: BCrypt::Password.create(params[:password])
       )
       session["current_user"] = user.id
+<<<<<<< Updated upstream
+      websocket_response(user, "create")
+=======
       render json: Oj.dump([ "OK"]), status: 200
+>>>>>>> Stashed changes
     end
   end
   def logout
     user = User.find(params[:id])
     session.delete("current_user")
+<<<<<<< Updated upstream
+    websocket_response(user, "destroy")
+    render text: ""
+    return false
+=======
     render json: Oj.dump([ "OK"]), status: 200
+>>>>>>> Stashed changes
   end
 end
