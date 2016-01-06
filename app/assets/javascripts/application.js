@@ -32,7 +32,7 @@ $(function(){
           password: $form.find("[name='password']").val()
         },
         success: function(e){
-          window.location.href = "http://socket-helpers-example.herokuapp.com/todos"
+          window.location.href = "http://socket-helpers-example.herokuapp.com/html_root"
         }
       })
     })

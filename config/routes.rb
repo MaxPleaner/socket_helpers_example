@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   post "todos", to: "todos#create"
   delete "todos", to: "todos#destroy"
 
+  # html root
+  get "/html_root", to: "html_pages#root"
+
   # root
   get "/", to: "authentication#root"
-  
+
 end
