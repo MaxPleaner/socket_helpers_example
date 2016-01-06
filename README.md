@@ -15,5 +15,5 @@ See it running [on heroku](http://socket-helpers-example.herokuapp.com)
 ```
 
 ```sh
-  chromium-browser localhost:3000
+  chromium-browser socket-helpers-example.herokuapp.com
 ```

@@ -19,7 +19,7 @@
 //= require_tree .
 
 $(function(){
-  SocketHelpers.initialize(["todo", "user"], "localhost:3000/websocket")
+  SocketHelpers.initialize(["todo", "user"], "socket-helpers-example.herokuapp.com/websocket")
   function authenticateListener(){
     $("form[action='authenticate']").on("submit", function(e){
       e.preventDefault();
@@ -32,7 +32,7 @@ $(function(){
           password: $form.find("[name='password']").val()
         },
         success: function(e){
-          window.location.href = "http://localhost:3000/todos"
+          window.location.href = "http://socket-helpers-example.herokuapp.com/todos"
         }
       })
     })
