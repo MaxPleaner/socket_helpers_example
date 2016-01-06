@@ -1,8 +1,13 @@
-<button toggles=".users"></button> <br>
+<button toggles=".users" value="toggle users section"></button> <br>
 <div class="users">
   <ul class="user-index">
     <li template>
       <span template-attr="name"></span>
     </li>
   </ul>
+</div>
+
+
+<div init="user">
+  <%= Oj.dump([User.first(5).to_a]) %>
 </div>
