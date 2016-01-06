@@ -16,6 +16,7 @@ class AuthenticationController < ApplicationController
       )
       session["current_user"] = user.id
       websocket_response(user, "create")
+      render text: ""
     end
   end
   def logout
