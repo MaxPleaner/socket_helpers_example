@@ -19,8 +19,37 @@
 //= require_tree .
 
 $(function(){
-  SocketHelpers.initialize(["todo", "user"], "socket-helpers-example.herokuapp.com/websocket")
-  function authenticateListener(){
+  // Bind custom events
+    function music(data){
+      console.log(data)
+    }
+    channels = {}
+    var dispatcher = new WebSocketRails("localhost:3000/websocket")
+    channels["data-stream"] = dispatcher.subscribe("date-stream")
+    channels["data-stream"].bind("music", music) 
+
+  SocketHelpers.initialize(["todo", "user", "notepad"], "localhost:3000/websocket")
+
+  notepadListener = function(){
+    $("#notepad").on("input", function(e){
+      var $textarea = $(e.currentTarget)
+      var text = $textarea.val()
+      $.ajax({
+        url: "/update_notepad",
+        method: "POST",
+        data: {
+          id: $textarea.attr("notepad"),
+          content: text
+        },
+        success: function(){
+          console.log("updated notepad")
+        }
+      })
+      return true
+    })
+  }()
+
+  authenticateListener = function (){
     $("form[action='authenticate']").on("submit", function(e){
       e.preventDefault();
       var $form = $(e.currentTarget)
@@ -31,11 +60,11 @@ $(function(){
           name: $form.find("[name='name']").val(),
           password: $form.find("[name='password']").val()
         },
-        success: function(e){
-          window.location.href = "http://socket-helpers-example.herokuapp.com/html_root"
+        success: function(){
+          window.location.href = "http://localhost:3000/html_root"
         }
       })
     })
-  } 
-  authenticateListener()
+  }()
+
 })

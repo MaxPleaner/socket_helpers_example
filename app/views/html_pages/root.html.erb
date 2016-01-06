@@ -1,13 +1,39 @@
-<button toggles=".users" value="toggle users section"></button> <br>
-<div class="users">
-  <ul class="user-index">
-    <li template>
-      <span template-attr="name"></span>
-    </li>
-  </ul>
+<button toggles=".users">list users</button> <br>
+<div class="users" style="border: 1px solid black">
+  <section class="user-index">
+    <div template>
+      <form class="link-style" skip-sockets action="/users" method="GET">
+        <input type="hidden" name="id" template-attr='id'>
+        <input type="submit" template-attr='name'>
+      </form> <br>
+    </div>
+  </section>
+</div> <br>
+
+<button toggles=".list-notepads">list notepads</button><br>
+<div class="list-notepads" style="border: 1px solid black">
+  <section class="notepad-index">
+    <div template>
+      <form class="link-style" skip-sockets action="/notepad" method="GET">
+        <input type="hidden" name="name" template-attr='name'>
+        <input type="submit" template-attr='name'>
+      </form>
+    </div>
+  </section>
+</div> <br>
+
+<button toggles=".make-notepad">Make notepad</button><br>
+<div class="make-notepad" style="border: 1px solid black">
+  <form skip-sockets action="/notepad" method="GET">
+    <input type="text" name="name" placeholder="name">
+    <input type="submit" value="submit">
+  </form>
 </div>
 
-
 <div init="user">
-  <%= Oj.dump(User.first(5).to_a) %>
+  <%= Oj.dump(User.first(5).to_a.map { |user| user.attributes.merge('record_class' => 'user') }) %>
+</div>
+
+<div init="notepad">
+  <%= Oj.dump(Notepad.first(5).to_a.map { |notepad| notepad.attributes.merge('record_class' => 'notepad') }) %>
 </div>

@@ -2,7 +2,7 @@ Socket Helpers Example
 
 a Rails app using [socket_helpers](http://github.com/maxpleaner/socket_helpers)
 
-See it running [on heroku](http://socket-helpers-example.herokuapp.com)
+See it running [on heroku](http://localhost:3000)
 
 **To run locally**
 
@@ -15,5 +15,5 @@ See it running [on heroku](http://socket-helpers-example.herokuapp.com)
 ```
 
 ```sh
-  chromium-browser socket-helpers-example.herokuapp.com
+  chromium-browser localhost:3000
 ```

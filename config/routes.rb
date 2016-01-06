@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   # html root
   get "/html_root", to: "html_pages#root"
 
+  # notepad
+  get "/notepad", to: "html_pages#notepad"
+  post "update_notepad", to: "notepad#update"
+
   # root
   get "/", to: "authentication#root"
 

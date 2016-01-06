@@ -1,5 +1,4 @@
 class TodosController < ApplicationController
-  include SocketHelpers::ControllerHelpers
   def create
     todo = Todo.create(content: params[:content])
     websocket_response(todo, "create")

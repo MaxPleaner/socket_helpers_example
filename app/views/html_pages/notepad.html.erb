@@ -1,0 +1,10 @@
+<input type="text" binding-tag="notepad,<%= @notepad.id %>,name"></input> 
+<br>
+
+<textarea id="notepad" notepad="<%= @notepad.id %>" binding-tag="notepad,<%= @notepad.id %>,content">
+</textarea>
+
+<div init="notepad">
+  <%= Oj.dump([@notepad.attributes.merge("record_class" => "notepad")]) %>
+</div>
+
