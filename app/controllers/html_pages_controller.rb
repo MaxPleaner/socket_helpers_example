@@ -18,6 +18,8 @@ class HtmlPagesController < ApplicationController
   def notepad
     @notepad = Notepad.find_or_initialize_by(name: params[:name])
     @notepad.save
+    WebsocketRails["notepad"].trigger("create", public_attrs(@notepad))
+
   end
 
   private
