@@ -1,5 +1,7 @@
 Rails.application.configure do
 
+  RootUrl = "socket-helpers-example.herokuapp.com"
+
   # ***************************
   # faster heroku deploys
   # http://blog.alexmaccaw.com/faster-deploys

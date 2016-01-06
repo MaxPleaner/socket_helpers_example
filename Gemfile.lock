@@ -1,15 +1,3 @@
-PATH
-  remote: /home/max/Desktop/gem/socket_helpers
-  specs:
-    socket_helpers (1.0.5)
-      faye-websocket (= 0.10.0)
-      jquery-rails
-      jquery-turbolinks
-      nokogiri
-      oj
-      rails
-      websocket-rails
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -150,6 +138,14 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    socket_helpers (1.0.5)
+      faye-websocket (= 0.10.0)
+      jquery-rails
+      jquery-turbolinks
+      nokogiri
+      oj
+      rails
+      websocket-rails
     spring (1.6.1)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
@@ -208,7 +204,7 @@ DEPENDENCIES
   rollbar (~> 1.2.7)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  socket_helpers!
+  socket_helpers
   spring
   sqlite3
   turbolinks

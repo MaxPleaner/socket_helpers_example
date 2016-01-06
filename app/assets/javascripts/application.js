@@ -24,11 +24,11 @@ $(function(){
       console.log(data)
     }
     channels = {}
-    var dispatcher = new WebSocketRails("localhost:3000/websocket")
+    var dispatcher = new WebSocketRails("<%= RootUrl %>/websocket")
     channels["data-stream"] = dispatcher.subscribe("date-stream")
     channels["data-stream"].bind("music", music) 
 
-  SocketHelpers.initialize(["todo", "user", "notepad"], "localhost:3000/websocket")
+  SocketHelpers.initialize(["todo", "user", "notepad"], "<%= RootUrl %>/websocket")
 
   notepadListener = function(){
     $("#notepad").on("input", function(e){
@@ -61,7 +61,7 @@ $(function(){
           password: $form.find("[name='password']").val()
         },
         success: function(){
-          window.location.href = "http://localhost:3000/html_root"
+          window.location.href = "http://<%= RootUrl %>/html_root"
         }
       })
     })

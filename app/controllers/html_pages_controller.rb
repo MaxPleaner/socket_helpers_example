@@ -13,6 +13,6 @@ class HtmlPagesController < ApplicationController
 
   private
     def login_required
-      redirect_to "http://localhost:3000" unless session["current_user"]
+      redirect_to "http://#{RootUrl}" unless session["current_user"]
     end
 end
