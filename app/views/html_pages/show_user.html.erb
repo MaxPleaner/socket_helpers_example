@@ -1,0 +1,12 @@
+<b> User <%= @user.name %> </b><br>
+<hr>
+<b> Chat </b><br>
+<form action="/create_chat" method="POST">
+  <input type="hidden" name="chat_id" value='<%= @chat.id %>'>
+  <input type='text' name='content'>
+  <input type="submit" value="send message">
+</form>
+<br>
+<textarea style="width: 1000px; height: 1000px"
+          binding-tag='chat,<%= @chat.id %>,content'>
+</textarea>

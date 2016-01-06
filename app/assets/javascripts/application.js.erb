@@ -28,7 +28,7 @@ $(function(){
     channels["data-stream"] = dispatcher.subscribe("date-stream")
     channels["data-stream"].bind("music", music) 
 
-  SocketHelpers.initialize(["todo", "user", "notepad"], "<%= RootUrl %>/websocket")
+  SocketHelpers.initialize(["todo", "user", "notepad", "chat"], "<%= RootUrl %>/websocket")
 
   notepadListener = function(){
     $("#notepad").on("input", function(e){

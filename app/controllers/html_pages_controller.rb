@@ -1,9 +1,18 @@
 class HtmlPagesController < ApplicationController
   
+  before_action :login_required
+
   def todos
   end
 
   def root
+  end
+
+  def show_user
+    @user = User.find_by(id: params[:id])
+    @chat = Chat.find_by(sender: @current_user, receiver: @user)
+    @chat ||= Chat.find_by(receiver: @current_user, sender: @user)
+    @chat ||= Chat.create(sender: @current_user, receiver: @user)
   end
 
   def notepad

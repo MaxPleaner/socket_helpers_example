@@ -13,6 +13,11 @@ Rails.application.routes.draw do
   # html root
   get "/html_root", to: "html_pages#root"
 
+  # users
+  get "/users", to: "html_pages#show_user"
+
+  # chats
+  post "create_chat", to: "chats#create"
   # notepad
   get "/notepad", to: "html_pages#notepad"
   post "update_notepad", to: "notepad#update"

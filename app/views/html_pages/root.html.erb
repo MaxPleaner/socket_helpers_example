@@ -31,9 +31,9 @@
 </div>
 
 <div init="user">
-  <%= Oj.dump(User.first(5).to_a.map { |user| user.attributes.merge('record_class' => 'user') }) %>
+  <%= Oj.dump(User.all.to_a.map { |user| user.attributes.merge('record_class' => 'user') }) %>
 </div>
 
 <div init="notepad">
-  <%= Oj.dump(Notepad.first(5).to_a.map { |notepad| notepad.attributes.merge('record_class' => 'notepad') }) %>
+  <%= Oj.dump(Notepad.all.to_a.map { |notepad| notepad.attributes.merge('record_class' => 'notepad') }) %>
 </div>

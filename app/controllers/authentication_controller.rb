@@ -15,7 +15,7 @@ class AuthenticationController < ApplicationController
         password: BCrypt::Password.create(params[:password])
       )
       session["current_user"] = user.id
-      render json: Oj.dump([ "OK"]), status: 200
+      websocket_response(user, "create")
     end
   end
   def logout
