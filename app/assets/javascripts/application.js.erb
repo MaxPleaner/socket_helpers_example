@@ -19,16 +19,11 @@
 //= require_tree .
 
 $(function(){
+  var dispatcher = SocketHelpers.initialize(["todo", "user", "notepad", "chat"], "<%= RootUrl %>/websocket")
   // Bind custom events
-    function music(data){
-      console.log(data)
-    }
-    channels = {}
-    var dispatcher = new WebSocketRails("<%= RootUrl %>/websocket")
-    channels["data-stream"] = dispatcher.subscribe("date-stream")
-    channels["data-stream"].bind("music", music) 
-
-  SocketHelpers.initialize(["todo", "user", "notepad", "chat"], "<%= RootUrl %>/websocket")
+  channels["foo"] = dispatcher.subscribe("foo")
+  channels["foo"].bind("bar", function(){console.log("asd")})
+  channels["foo"].trigger("bar") 
 
   notepadListener = function(){
     $("#notepad").on("input", function(e){

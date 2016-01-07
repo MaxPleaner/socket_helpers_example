@@ -13,6 +13,12 @@ Rails.application.routes.draw do
   # html root
   get "/html_root", to: "html_pages#root"
 
+  # locations
+  get "/locations", to: "html_pages#locations"
+  post "/locations", to: "locations#create"
+  delete "/locations", to: "locations#destroy"
+  post "/location_category", to: "locations#categorize"
+
   # users
   get "/users", to: "html_pages#show_user"
 

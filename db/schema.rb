@@ -11,12 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160106105416) do
+ActiveRecord::Schema.define(version: 20160107065225) do
 
   create_table "chats", force: :cascade do |t|
     t.integer  "sender_id"
     t.integer  "receiver_id"
     t.text     "content"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "location_categorizations", force: :cascade do |t|
+    t.integer  "location_id"
+    t.string   "category"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "location_categorizations", ["location_id"], name: "index_location_categorizations_on_location_id"
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
