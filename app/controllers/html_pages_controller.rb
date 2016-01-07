@@ -8,6 +8,25 @@ class HtmlPagesController < ApplicationController
   def root
   end
 
+  def locations
+    @init_locations = Oj.dump(
+      Location.all.includes(:categories).map do |location|
+        location.attributes.merge(
+          'record_class' => "location"
+        )
+      end
+    )
+    @init_categories = Oj.dump(
+      LocationCategorization.select(:category).distinct.to_a.map(&:category).map do |category|
+        {
+          'category' => category,
+          'record_class' => "category",
+          'locations' => LocationCategorization.where(category: category).includes(:location).map(&:location).map(&:name).join(", ")
+        }
+      end
+    )
+  end
+
   def show_user
     @user = User.find_by(id: params[:id])
     @chat = Chat.find_by(sender: @current_user, receiver: @user)

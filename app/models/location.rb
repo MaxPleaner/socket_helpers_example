@@ -7,12 +7,12 @@ class Location < ActiveRecord::Base
     dependent: :destroy
   )
 
-  validates :name, :content, presence: true
+  validates :name, :description, presence: true
 
   def attributes
     attrs = super
     return attrs.merge(
-      'categories' => 
+      'categories' => categories
     )
   end
 end

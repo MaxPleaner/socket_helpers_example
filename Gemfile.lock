@@ -138,7 +138,7 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    socket_helpers (1.0.6)
+    socket_helpers (1.0.7)
       faye-websocket (= 0.10.0)
       jquery-rails
       jquery-turbolinks
@@ -197,6 +197,7 @@ DEPENDENCIES
   dalli
   jbuilder (~> 2.0)
   jquery-rails
+  jquery-turbolinks
   memcachier
   pg
   rails (= 4.2.5)

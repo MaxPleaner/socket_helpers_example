@@ -2,7 +2,7 @@ class LocationsController < ApplicationController
   def create
     location = Location.create(
       name: params[:name],
-      description: params[:descroption]
+      description: params[:description]
     )
     websocket_response(location, "create")
     return false

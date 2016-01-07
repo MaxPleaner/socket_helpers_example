@@ -13,17 +13,30 @@
 //= require jquery
 //= require websocket_rails/main
 //= require jquery-initialize
+//= require jquery.turbolinks
 //= require socket_helpers
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
 
 $(function(){
-  var dispatcher = SocketHelpers.initialize(["todo", "user", "notepad", "chat"], "<%= RootUrl %>/websocket")
+  SocketHelpers.addedHooks = [
+    // location: [
+    //   {
+    //     name: "addLocation",
+    //     callback: function(location){
+    //       alert(location)
+    //       console.log(location)
+    //     } 
+    //   }
+    // ]
+  ]
+  // }
+  var dispatcher = SocketHelpers.initialize(["todo", "user", "notepad", "chat", "location", "location_categorization"], "<%= RootUrl %>/websocket")
   // Bind custom events
   channels["foo"] = dispatcher.subscribe("foo")
-  channels["foo"].bind("bar", function(){console.log("asd")})
-  channels["foo"].trigger("bar") 
+  channels["foo"].bind("bar", function(){debugger})
+  channels["foo"].trigger("bar")
 
   notepadListener = function(){
     $("#notepad").on("input", function(e){

@@ -1,0 +1,55 @@
+<button toggles=".locations-list">List locations</button><br>
+<div class="locations-list">
+  <ul class="location-index">
+    <div template>
+      <li>
+        <span template-attr='name'></span>
+         - <i template-attr='description'></i>
+         - <button toggles="categorize-form">categorize</button>
+         <div class="categorize">
+           <form action="/location_category" method="POST">
+             <input type="hidden" name="id" template-attr='id'>
+             <input type="text" name="category" placeholder="category">
+             <input type="submit" value="create">
+           </form>
+         </div>
+      </li>
+    </div>
+  </ul> <br>
+</div>
+
+<button toggles=".new-location">New location</button> <br>
+<div class="new-location">
+  <form action="/locations" method="POST">
+    <input type="text" name="name" placeholder="name">
+    <input type="description" name="description" placeholder="description">
+    <input type="submit" value="submit">
+  </form> <br>
+</div>
+
+<button toggles="categories-list">
+  <div class="categories-list">
+    <ul class="category-index">
+      <div template>
+        <li>
+          <button toggles='.category-locations' >
+            <span template-attr='category'></span>
+          </button>
+          <div class="category-locations">
+            <pre binding-attr='locations'></pre>
+          </div>
+        </li>
+      </div>
+    </ul>
+  </div>
+</button>
+
+
+
+<div init="location">
+  <%= @init_locations %>
+</div>
+
+<div init="category">
+  <%= @init_categories %>
+</div>
