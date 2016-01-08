@@ -4,15 +4,19 @@ class Location < ActiveRecord::Base
     class_name: "LocationCategorization",
     foreign_key: :location_id,
     primary_key: :id,
-    dependent: :destroy
   )
 
   validates :name, :description, presence: true
 
   def attributes
-    attrs = super
-    return attrs.merge(
-      'categories' => categories
+    attrs = super.merge(
+      'categories' => categories.map(&:attributes)
     )
+    return attrs.reject do |k,v|
+      ["created_at",
+        "updated_at"
+        ].include?(k)
+    end
   end
+  
 end

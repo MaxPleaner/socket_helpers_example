@@ -4,47 +4,50 @@
     <div template>
       <li>
         <span template-attr='name'></span>
-         - <i template-attr='description'></i>
-         - <button toggles="categorize-form">categorize</button>
-         <div class="categorize">
-           <form action="/location_category" method="POST">
-             <input type="hidden" name="id" template-attr='id'>
-             <input type="text" name="category" placeholder="category">
-             <input type="submit" value="create">
+         - <i template-attr='description'></i> <br>
+         <button toggles=".categorize">categorize</button>
+           <div class="categorize">
+             <form action="/location_category" method="POST">
+               <input type="hidden" name="id" template-attr='id'>
+               <input type="text" name="category" placeholder="category">
+               <input type="submit" value="create">
+             </form>
+           </div>
+           <br>
+           <form action="/locations" method="POST">
+             <input type="hidden" name="_method" value="DELETE">
+             <input type="hidden" name="id" template-attr="id">
+             <input type="submit" value="delete" style="color: red">
            </form>
-         </div>
       </li>
     </div>
-  </ul> <br>
-</div>
+  </ul>
+</div> <br>
 
 <button toggles=".new-location">New location</button> <br>
 <div class="new-location">
-  <form action="/locations" method="POST">
+  <br><form action="/locations" method="POST">
     <input type="text" name="name" placeholder="name">
     <input type="description" name="description" placeholder="description">
     <input type="submit" value="submit">
-  </form> <br>
-</div>
+  </form>
+</div> <br>
 
-<button toggles="categories-list">
-  <div class="categories-list">
-    <ul class="category-index">
-      <div template>
-        <li>
-          <button toggles='.category-locations' >
-            <span template-attr='category'></span>
-          </button>
-          <div class="category-locations">
-            <pre binding-attr='locations'></pre>
-          </div>
-        </li>
-      </div>
-    </ul>
-  </div>
-</button>
-
-
+<button toggles=".categories-list">Categories list </button>
+<div class="categories-list">
+  <ul class="category-index">
+    <div template>
+      <li>
+        <button toggles='.category-locations' >
+          <span template-attr='category'></span>
+        </button>
+        <div class="category-locations">
+          <pre binding-attr='locations'></pre>
+        </div>
+      </li>
+    </div>
+  </ul>
+</div> <br>
 
 <div init="location">
   <%= @init_locations %>

@@ -20,19 +20,16 @@
 //= require_tree .
 
 $(function(){
-  SocketHelpers.addedHooks = [
-    // location: [
-    //   {
-    //     name: "addLocation",
-    //     callback: function(location){
-    //       alert(location)
-    //       console.log(location)
-    //     } 
-    //   }
-    // ]
-  ]
+  SocketHelpers.addedHooks = {
+    todo: [],
+    user: [],
+    notepad: [],
+    chat: [],
+    location: [],
+    category: []  
+  }
   // }
-  var dispatcher = SocketHelpers.initialize(["todo", "user", "notepad", "chat", "location", "location_categorization"], "<%= RootUrl %>/websocket")
+  var dispatcher = SocketHelpers.initialize(["todo", "user", "notepad", "chat", "location", "category"], "<%= RootUrl %>/websocket")
   // Bind custom events
   channels["foo"] = dispatcher.subscribe("foo")
   channels["foo"].bind("bar", function(){debugger})
@@ -46,7 +43,8 @@ $(function(){
         url: "/update_notepad",
         method: "POST",
         data: {
-          id: $textarea.attr("notepad"),
+          id: $textarea.attr("notepad-id"),
+          name: $textarea.attr("notepad-name"),
           content: text
         },
         success: function(){

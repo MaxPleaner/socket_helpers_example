@@ -1,7 +1,7 @@
 <input type="text" binding-tag="notepad,<%= @notepad.id %>,name"></input> 
 <br>
 
-<textarea id="notepad" notepad="<%= @notepad.id %>" binding-tag="notepad,<%= @notepad.id %>,content">
+<textarea id="notepad" notepad-name='<%= @notepad.name %>' notepad-id="<%= @notepad.id %>" binding-tag="notepad,<%= @notepad.id %>,content">
 </textarea>
 
 <div init="notepad">

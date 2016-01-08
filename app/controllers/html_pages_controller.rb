@@ -17,13 +17,7 @@ class HtmlPagesController < ApplicationController
       end
     )
     @init_categories = Oj.dump(
-      LocationCategorization.select(:category).distinct.to_a.map(&:category).map do |category|
-        {
-          'category' => category,
-          'record_class' => "category",
-          'locations' => LocationCategorization.where(category: category).includes(:location).map(&:location).map(&:name).join(", ")
-        }
-      end
+      LocationCategorization.select(:category).distinct.to_a.map(&:attributes)
     )
   end
 

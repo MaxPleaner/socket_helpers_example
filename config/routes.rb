@@ -24,9 +24,11 @@ Rails.application.routes.draw do
 
   # chats
   post "create_chat", to: "chats#create"
+
   # notepad
   get "/notepad", to: "html_pages#notepad"
   post "update_notepad", to: "notepad#update"
+  delete '/notepad', to: "notepad#destroy"
 
   # root
   get "/", to: "authentication#root"

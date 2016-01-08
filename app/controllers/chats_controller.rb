@@ -5,5 +5,6 @@ class ChatsController < ApplicationController
       content: "#{@chat.content} #{@current_user.name}: #{params[:content]}\n"
     )
     websocket_response(@chat, "update")
+    render text: ""
   end
 end

@@ -5,21 +5,37 @@ class LocationsController < ApplicationController
       description: params[:description]
     )
     websocket_response(location, "create")
-    return false
+    render text: ""
   end
   def destroy
     location = Location.find_by(id: params[:id]) \
                || Location.new
     location.destroy
+    LocationCategorization.where(
+      location_id: location.id
+    ).includes(:location).each do |category|
+      if !(category.location) || Location.exists?(
+        name: category.location.name
+      )
+        websocket_response(category, "destroy")
+        category.destroy
+      end
+    end
     websocket_response(location, "destroy")
-    return false
+    render text: ""
   end
   def categorize
     location = Location.find_by(id: params[:id]) || Location.new  
-    LocationCategorization.create(
+    new_category = LocationCategorization.new(
       location_id: location.id,
       category: params[:category]
     )
-    websocket_response(location, "update")
+    unless LocationCategorization.exists?(
+      category: params[:category]
+    )
+      new_category.save
+      websocket_response(new_category, "create")
+    end
+    render text: ""
   end
 end

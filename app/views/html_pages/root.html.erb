@@ -14,9 +14,14 @@
 <div class="list-notepads" style="border: 1px solid black">
   <section class="notepad-index">
     <div template>
-      <form class="link-style" skip-sockets action="/notepad" method="GET">
+      <form style="display: inline" class="link-style" skip-sockets action="/notepad" method="GET">
         <input type="hidden" name="name" template-attr='name'>
         <input type="submit" template-attr='name'>
+      </form>
+      <form style="display: inline" class="link-style" action="/notepad" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="id" template-attr="id">
+        <input type="submit" value="delete" style="color: red">
       </form>
     </div>
   </section>

@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+RootUrl = "localhost:#{ENV["PORT"] || 3000}"
+
 module DeployedTest
   class Application < Rails::Application
     config.logger = Logger.new(STDOUT)
