@@ -1,5 +1,6 @@
-PATH
-  remote: /home/max/Desktop/gem/socket_helpers
+GIT
+  remote: http://github.com/maxpleaner/socket_helpers
+  revision: fa2069dca62cf256397dfcae5b726a2c5578247e
   specs:
     socket_helpers (0.0.9)
       faye-websocket (= 0.10.0)
