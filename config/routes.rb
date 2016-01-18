@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   # auth
-  get "/todos", to: "authentication#root"
+  get "unauthenticated", to: "authentication#root"
   post "authenticate", to: "authentication#authenticate"
   post "logout", to: "authentication#logout"
   

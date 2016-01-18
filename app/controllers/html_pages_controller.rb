@@ -1,6 +1,6 @@
 class HtmlPagesController < ApplicationController
   
-  before_action :login_required
+  before_action :login_required, except: [:todos]
 
   def todos
   end
@@ -37,6 +37,6 @@ class HtmlPagesController < ApplicationController
 
   private
     def login_required
-      redirect_to "http://#{RootUrl}" unless session["current_user"]
+      redirect_to "http://#{RootUrl}/unauthenticated" unless session["current_user"]
     end
 end
