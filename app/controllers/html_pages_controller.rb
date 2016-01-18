@@ -3,6 +3,10 @@ class HtmlPagesController < ApplicationController
   before_action :login_required, except: [:todos]
 
   def todos
+    @init_todos = Todo.first(30).map do |todo|
+      todo.attributes.merge('record_class' => 'todo')
+    end
+
   end
 
   def root

@@ -31,6 +31,6 @@ Rails.application.routes.draw do
   delete '/notepad', to: "notepad#destroy"
 
   # root
-  get "/", to: "authentication#root"
+  get "/", to: "html_pages#todos"
 
 end
